@@ -6,7 +6,6 @@ import { accountUpdated } from './_services/account-updated';
 
 // Routes is wrapped with the apiHandler to handle the logic around error handling, request validation, etc.
 export const POST = apiHandler(async ({ req, params, stripeEvent }: ApiRequestProps) => {
-
   // Example implementations of different Stripe events
   // Payment link success
   if (stripeEvent.type === 'payment_intent.succeeded') {
