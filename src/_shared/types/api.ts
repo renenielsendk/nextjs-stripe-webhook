@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import Stripe from 'stripe';
 
-type ErrorTypes = 'ValidationError' | 'NotFoundError' | 'UnauthorizedError';
+type ErrorTypes = 'ValidationError' | 'NotFoundError' | 'UnauthorizedError' | 'ServerError';
 
 export class APIError extends Error {
   type: ErrorTypes;

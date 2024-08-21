@@ -38,7 +38,7 @@ export const apiHandler = (handler: ({ req, params }: ApiRequestProps) => Promis
           }
           default: {
             // We never want to return the error message to the client
-            return NextResponse.json({ message: 'ServerError' }, { status: 500 });
+            return NextResponse.json({ message: 'An error occurred.' }, { status: 500 });
           }
         }
       } else {

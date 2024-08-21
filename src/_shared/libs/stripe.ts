@@ -17,7 +17,7 @@ export const validateRequest = async (req: NextRequest): Promise<Stripe.Event> =
   if (!signature) {
     logger.error('Missing stripe-signature');
     throw new APIError({
-      type: 'ValidationError',
+      type: 'ServerError',
       message: 'Missing stripe-signature',
     });
   }
@@ -25,7 +25,7 @@ export const validateRequest = async (req: NextRequest): Promise<Stripe.Event> =
   if (!STRIPE_CONFIG.STRIPE_WEBHOOK_SECRET) {
     logger.error('Missing STRIPE_WEBHOOK_SECRET');
     throw new APIError({
-      type: 'ValidationError',
+      type: 'ServerError',
       message: 'Missing STRIPE_WEBHOOK_SECRET',
     });
   }
@@ -39,7 +39,7 @@ export const validateRequest = async (req: NextRequest): Promise<Stripe.Event> =
   } catch (err) {
     logger.error(`Webhook signature verification failed. ${err.message}`);
     throw new APIError({
-      type: 'ValidationError',
+      type: 'ServerError',
       message: 'Webhook signature verification failed.',
     });
   }
