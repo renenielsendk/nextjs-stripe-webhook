@@ -1,5 +1,5 @@
 import { createChildLogger } from '@/libs/logger';
-import { CustomAPIError } from '@/types/api';
+import { APIError } from '@/types/api';
 import { headers } from 'next/headers';
 import { NextRequest } from 'next/server';
 import { STRIPE_CONFIG } from 'src/config/stripe';
@@ -16,7 +16,7 @@ export const validateRequest = async (req: NextRequest): Promise<Stripe.Event> =
   const signature = headers().get('stripe-signature');
   if (!signature) {
     logger.error('Missing stripe-signature');
-    throw new CustomAPIError({
+    throw new APIError({
       type: 'ValidationError',
       message: 'Missing stripe-signature',
     });
@@ -24,7 +24,7 @@ export const validateRequest = async (req: NextRequest): Promise<Stripe.Event> =
 
   if (!STRIPE_CONFIG.STRIPE_WEBHOOK_SECRET) {
     logger.error('Missing STRIPE_WEBHOOK_SECRET');
-    throw new CustomAPIError({
+    throw new APIError({
       type: 'ValidationError',
       message: 'Missing STRIPE_WEBHOOK_SECRET',
     });
@@ -38,7 +38,7 @@ export const validateRequest = async (req: NextRequest): Promise<Stripe.Event> =
     event = stripe.webhooks.constructEvent(body, signature, STRIPE_CONFIG.STRIPE_WEBHOOK_SECRET);
   } catch (err) {
     logger.error(`Webhook signature verification failed. ${err.message}`);
-    throw new CustomAPIError({
+    throw new APIError({
       type: 'ValidationError',
       message: 'Webhook signature verification failed.',
     });

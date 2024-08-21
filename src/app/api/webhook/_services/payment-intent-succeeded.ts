@@ -22,7 +22,7 @@ export const paymentIntentSucceeded = async ({ event }: Props): Promise<void> =>
   // Retrieve the order ID from the event metadata, added during the checkout process.
   // if (!data.object.metadata?.order_id) {
   //   logger.error('order_id missing in metadata');
-  //   throw new CustomAPIError({ type: 'NotFoundError' });
+  //   throw new APIError({ type: 'NotFoundError' });
   // }
 
   // Look up the order in the database using the retrieved order ID.
@@ -31,13 +31,13 @@ export const paymentIntentSucceeded = async ({ event }: Props): Promise<void> =>
   // const order = await dbClient.orders.findUnique({
   //   where: { id: orderId },
   // }).catch(() => {
-  //   throw new CustomAPIError({ type: 'NotFoundError' });
+  //   throw new APIError({ type: 'NotFoundError' });
   // });
 
   // If the order is not found, log the information and throw an error.
   // if (!order) {
   //   logger.info({ orderId }, 'Order not found');
-  //   throw new CustomAPIError({ type: 'NotFoundError' });
+  //   throw new APIError({ type: 'NotFoundError' });
   // }
 
   // Ensure idempotency by checking if the order is already completed; log and return if true.

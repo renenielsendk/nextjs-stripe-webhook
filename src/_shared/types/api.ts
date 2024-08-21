@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 
 type ErrorTypes = 'ValidationError' | 'NotFoundError' | 'UnauthorizedError';
 
-export class CustomAPIError extends Error {
+export class APIError extends Error {
   type: ErrorTypes;
 
   constructor({ message, type }: { message?: string; type: ErrorTypes }) {

@@ -46,8 +46,24 @@ This project utilizes [Pino logger](https://github.com/pinojs/pino) for streamli
 
 ### Uniform Error Handling
 
-You can throw errors anywhere in your implementation using the [CustomAPIError](https://github.com/renenielsendk/nextjs-stripe-webhook/blob/3f5c97cee5b270d28445dc06940be0744957ee6f/src/_shared/types/api.ts#L6). These errors are consistently caught and returned as HTTP responses.
+You can throw errors anywhere in your implementation using the [APIError](https://github.com/renenielsendk/nextjs-stripe-webhook/blob/3f5c97cee5b270d28445dc06940be0744957ee6f/src/_shared/types/api.ts#L6).
 
+These errors are consistently caught and returned as HTTP responses.
+
+Example:
+
+```
+const user = await db.user.find({ id: '1' });
+
+if (!user) {
+  throw new ApiError({
+    type: 'NotFoundError',
+    message: 'User not found', // optional
+  });
+}
+```
+
+The above example will return Http Status `404` with body `{ message: 'User not found'}`.
 
 ### Code Prettier
 

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ApiRequestProps, CustomAPIError } from '@/types/api';
+import { ApiRequestProps, APIError } from '@/types/api';
 import { initializeLogger } from './logger';
 import { validateRequest } from './stripe';
 
@@ -25,7 +25,7 @@ export const apiHandler = (handler: ({ req, params }: ApiRequestProps) => Promis
       logger.error('error', error);
 
       // Handle custom API errors
-      if (error instanceof CustomAPIError) {
+      if (error instanceof APIError) {
         switch (error.type) {
           case 'ValidationError': {
             return NextResponse.json({ message: error.message || 'ValidationError' }, { status: 400 });
