@@ -135,4 +135,6 @@ Looking for more exciting projects and insights?
 
 👇👇
 
-Connect with me on [𝕏](https://x.com/renenielsendk) for updates, tips, and more awesome content!
+Connect with me on [𝕏 @renenielsendk](https://x.com/renenielsendk) for updates, tips, and more awesome content!
+
+#nextjs, #stripe, #stripe-checkout, #subscription, #api, #template, #webhook
