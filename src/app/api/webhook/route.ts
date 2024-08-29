@@ -1,11 +1,15 @@
 import { NextResponse } from 'next/server';
-import { paymentIntentSucceeded } from './_services/payment-intent-succeeded';
 import { apiHandler } from '@/libs/api';
 import { ApiRequestProps } from '@/types/api';
+import { paymentIntentSucceeded } from './_services/payment-intent-succeeded';
 import { accountUpdated } from './_services/account-updated';
 
-// Routes is wrapped with the apiHandler to handle the logic around error handling, request validation, etc.
+// The route is wrapped with apiHandler to manage error handling, request validation, and other middleware logic.
 export const POST = apiHandler(async ({ req, params, stripeEvent }: ApiRequestProps) => {
+  // 'req' can be used for extracting headers, cookies, and other request-level data.
+  // 'params' can be used for extracting query parameters, route parameters, etc.
+  // Example: const { routeId } = params;
+
   // Example implementations of different Stripe events
   // Payment link success
   if (stripeEvent.type === 'payment_intent.succeeded') {
@@ -21,5 +25,6 @@ export const POST = apiHandler(async ({ req, params, stripeEvent }: ApiRequestPr
   }
   // Implement other event types here
 
+  // Return a JSON response with a 200 status code upon successful execution of the logic
   return NextResponse.json({}, { status: 200 });
 });
