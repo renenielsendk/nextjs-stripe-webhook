@@ -61,6 +61,8 @@ if (!user) {
 
 The above example will return Http Status `404` with body `{ message: 'User not found'}`.
 
+![Postman error](./docs/postman-error.png)
+
 ### Code Prettier
 
 Running `yarn prettier` will format your code to a consistent style, ensuring a uniform codebase.
