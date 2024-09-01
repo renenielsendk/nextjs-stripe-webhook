@@ -6,7 +6,9 @@
     <a href="https://github.com/renenielsendk/nextjs-stripe-webhook/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/renenielsendk/nextjs-stripe-webhook" alt="License"></a>
 </p>
 
-A plug-and-play Next.js application designed for seamless handling of Stripe webhooks. Start accepting events from Stripe in under 10 minutes.
+The NextJS Stripe Webhook project sets up the core structure for handling Stripe webhook events in a Next.js app. It handles all the boilerplate around processing webhooks, letting you focus on implementing your custom logic.
+
+You get a clean, ready-to-use setup—just drop in your business logic and start managing Stripe events effortlessly.
 
 - [Introduction](#introduction)
 - [Built with](#built-with)
@@ -22,12 +24,6 @@ A plug-and-play Next.js application designed for seamless handling of Stripe web
   - [Configure Stripe Webhook](#step-3-configure-stripe-webhook)
 - [License](#license)
 - [Links](#links)
-
-## Introduction
-
-The NextJS Stripe Webhook project sets up the core structure for handling Stripe webhook events in a Next.js app. It handles all the boilerplate around processing webhooks, letting you focus on implementing your custom logic.
-
-You get a clean, ready-to-use setup—just drop in your business logic and start managing Stripe events effortlessly.
 
 ## Built with
 
